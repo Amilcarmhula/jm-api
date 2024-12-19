@@ -6,7 +6,7 @@ const SID = process.env.ID
 const AUTH = process.env.AUTHID
 
 const app = express();
-const port = 3010; // Porta do servidor
+const port = 3000; // Porta do servidor
 
 // Middleware
 app.use(express.json());
