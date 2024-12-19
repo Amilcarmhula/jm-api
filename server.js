@@ -1,9 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
-const twilio = require('twilio');
 const cors = require('cors');
-const SID = process.env.ID
-const AUTH = process.env.AUTHID
+const {sendWhatsAppMessage} = require('./swiperjs')
+
 
 const app = express();
 const PORT = process.env.PORT || 5000
@@ -12,10 +11,6 @@ const PORT = process.env.PORT || 5000
 app.use(express.json());
 app.use(cors());
 
-// Credenciais do Twilio (mantenha seguras!)
-const accountSid = SID
-const authToken = AUTH
-const client = twilio(accountSid, authToken);
 
 app.get("/teste", (req, res) => {
     res.json({
@@ -24,23 +19,22 @@ app.get("/teste", (req, res) => {
     })
 })
 
-// Endpoint para enviar mensagens
-app.post('/api/send-message', (req, res) => {
-    const { message } = req.body;
-    client.messages
-        .create({
-            from: 'whatsapp:+14155238886',
-            body: message,
-            to: 'whatsapp:+258847100793',
-        })
-        .then((response) => {
-            res.status(200).json({ success: true, sid: response.sid });
-        })
-        .catch((error) => {
-            res.status(500).json({ success: false, error: error.message });
-        });
-});
+// POST Endpoint
+app.post("/send-message", (req, res) => {
+    const { nome, numero, email, descricao } = req.body;
+    const mensagem = { nome:nome, numero: numero, email: email, descricao: descricao }
+    console.log(mensagem)
+    sendWhatsAppMessage(JSON.stringify(mensagem)) 
+    
+    res.json({ nome:nome, numero: numero, email: email, descricao: descricao });
+  });
 
+// Endpoint para enviar mensagens
+app.post('/send-messag', (req, res) => {
+    const { message } = req.body;
+    console.log(message)
+});
+ 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
