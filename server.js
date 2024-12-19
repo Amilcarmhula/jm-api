@@ -6,7 +6,7 @@ const SID = process.env.ID
 const AUTH = process.env.AUTHID
 
 const app = express();
-const port = 3000; // Porta do servidor
+const PORT = process.env.PORT || 5000
 
 // Middleware
 app.use(express.json());
@@ -38,6 +38,6 @@ app.post('/api/send-message', (req, res) => {
     //     });
 });
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
