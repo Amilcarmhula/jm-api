@@ -17,11 +17,18 @@ const accountSid = SID
 const authToken = AUTH
 const client = twilio(accountSid, authToken);
 
+app.get("/", (req, res) => {
+    res.json({
+        status: "API is working fine!",
+        code: 200
+    })
+})
+
 // Endpoint para enviar mensagens
 app.post('/api/send-message', (req, res) => {
     const { message } = req.body;
-    console.log("TESTE!!!! "+message)
-    console.log("TESTE!!!! "+message)
+    console.log("TESTE!!!! " + message)
+    console.log("TESTE!!!! " + message)
 
 
     // client.messages
