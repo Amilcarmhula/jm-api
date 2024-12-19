@@ -27,22 +27,18 @@ app.get("/", (req, res) => {
 // Endpoint para enviar mensagens
 app.post('/api/send-message', (req, res) => {
     const { message } = req.body;
-    console.log("TESTE!!!! " + message)
-    console.log("TESTE!!!! " + message)
-
-
-    // client.messages
-    //     .create({
-    //         from: 'whatsapp:+14155238886',
-    //         body: message,
-    //         to: 'whatsapp:+258847100793',
-    //     })
-    //     .then((response) => {
-    //         res.status(200).json({ success: true, sid: response.sid });
-    //     })
-    //     .catch((error) => {
-    //         res.status(500).json({ success: false, error: error.message });
-    //     });
+    client.messages
+        .create({
+            from: 'whatsapp:+14155238886',
+            body: message,
+            to: 'whatsapp:+258847100793',
+        })
+        .then((response) => {
+            res.status(200).json({ success: true, sid: response.sid });
+        })
+        .catch((error) => {
+            res.status(500).json({ success: false, error: error.message });
+        });
 });
 
 app.listen(PORT, () => {
