@@ -17,7 +17,7 @@ const accountSid = SID
 const authToken = AUTH
 const client = twilio(accountSid, authToken);
 
-app.get("/", (req, res) => {
+app.get("/teste", (req, res) => {
     res.json({
         status: "API is working fine!",
         code: 200
