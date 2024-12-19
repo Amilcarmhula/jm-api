@@ -1,7 +1,9 @@
 const express = require('express');
-// const dotenv = require('dotenv').config();
+const dotenv = require('dotenv').config();
 const twilio = require('twilio');
 const cors = require('cors');
+const SID = process.env.ID
+const AUTH = process.env.AUTHID
 
 const app = express();
 const port = 3010; // Porta do servidor
@@ -11,8 +13,8 @@ app.use(express.json());
 app.use(cors());
 
 // Credenciais do Twilio (mantenha seguras!)
-const accountSid = 'ACa42b20046dbeb313e32e37359fdb1cf7';
-const authToken = '51eda397ae976d20b3d0c89ed13ddba4';
+const accountSid = SID
+const authToken = AUTH
 const client = twilio(accountSid, authToken);
 
 // Endpoint para enviar mensagens

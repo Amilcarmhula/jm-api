@@ -1,7 +1,30 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "twilio": "^5.4.0"
-  }
+  },
+  "name": "jm-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amilcarmhula/jm-api.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Amilcar Mula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amilcarmhula/jm-api/issues"
+  },
+  "homepage": "https://github.com/Amilcarmhula/jm-api#readme",
+  "description": ""
 }
